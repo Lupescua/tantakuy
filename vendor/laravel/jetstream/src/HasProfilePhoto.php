@@ -17,9 +17,9 @@ trait HasProfilePhoto
      */
     public function updateProfilePhoto(UploadedFile $photo, $storagePath = 'profile-photos')
     {
-        tap($this->profile_photo_path, function ($previous) use ($photo, $storagePath) {
+        tap($this->profile_photo_url, function ($previous) use ($photo, $storagePath) {
             $this->forceFill([
-                'profile_photo_path' => $photo->storePublicly(
+                'profile_photo_url' => $photo->storePublicly(
                     $storagePath, ['disk' => $this->profilePhotoDisk()]
                 ),
             ])->save();
@@ -41,14 +41,14 @@ trait HasProfilePhoto
             return;
         }
 
-        if (is_null($this->profile_photo_path)) {
+        if (is_null($this->profile_photo_url)) {
             return;
         }
 
-        Storage::disk($this->profilePhotoDisk())->delete($this->profile_photo_path);
+        Storage::disk($this->profilePhotoDisk())->delete($this->profile_photo_url);
 
         $this->forceFill([
-            'profile_photo_path' => null,
+            'profile_photo_url' => null,
         ])->save();
     }
 
@@ -60,8 +60,8 @@ trait HasProfilePhoto
     protected function profilePhotoUrl(): Attribute
     {
         return Attribute::get(function (): string {
-            return $this->profile_photo_path
-                    ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_path)
+            return $this->profile_photo_url
+                    ? Storage::disk($this->profilePhotoDisk())->url($this->profile_photo_url)
                     : $this->defaultProfilePhotoUrl();
         });
     }
