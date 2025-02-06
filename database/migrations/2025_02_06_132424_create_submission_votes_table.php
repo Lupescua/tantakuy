@@ -6,18 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('competition_votes', function (Blueprint $table) {
+        Schema::create('submission_votes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('competition_id')->constrained()->onDelete('cascade');
+            $table->foreignId('submission_id')->constrained('user_submissions')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('competition_votes');
+        Schema::dropIfExists('submission_votes');
     }
 };

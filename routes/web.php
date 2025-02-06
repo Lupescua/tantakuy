@@ -36,13 +36,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Competition Management (Full CRUD)
     Route::resource('competitions', CompetitionController::class);
 
-    // Voting for Competitions
-    Route::post('/competition-votes', [CompetitionVoteController::class, 'store'])->name('competition.votes.store');
-    Route::delete('/competition-votes/{competitionVote}', [CompetitionVoteController::class, 'destroy'])->name('competition.votes.destroy');
-
     // Links for Competitions
     Route::post('/competition-links', [CompetitionLinkController::class, 'store'])->name('competition.links.store');
     Route::delete('/competition-links/{competitionLink}', [CompetitionLinkController::class, 'destroy'])->name('competition.links.destroy');
+
+    Route::post('/submissions', [UserSubmissionController::class, 'store'])->name('submissions.store');
+    Route::delete('/submissions/{submission}', [UserSubmissionController::class, 'destroy'])->name('submissions.destroy');
+
+    Route::post('/submission-votes', [SubmissionVoteController::class, 'store'])->name('submission.votes.store');
+    Route::delete('/submission-votes/{vote}', [SubmissionVoteController::class, 'destroy'])->name('submission.votes.destroy');
 });
 
 // Jetstream Authentication Middleware

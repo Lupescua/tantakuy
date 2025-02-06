@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             CompetitionSeeder::class,
-            CompetitionVoteSeeder::class,
             CompetitionLinkSeeder::class,
+            UserSubmissionSeeder::class,
+            SubmissionVoteSeeder::class,
         ]);
     }
 }

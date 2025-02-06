@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CompetitionVote extends Model
+class SubmissionVote extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'competition_id',
+        'submission_id',
         'user_id',
     ];
 
-    public function competition()
+    public function submission()
     {
-        return $this->belongsTo(Competition::class);
+        return $this->belongsTo(UserSubmission::class);
     }
 
     public function user()

@@ -13,7 +13,7 @@ class CompetitionController extends Controller
      */
     public function index()
     {
-        return response()->json(Competition::with('company', 'participants', 'votes', 'links')->get());
+        return response()->json(Competition::with('company', 'participants', 'links')->get());
     }
 
     /**
@@ -49,7 +49,7 @@ class CompetitionController extends Controller
      */
     public function show(Competition $competition)
     {
-        return response()->json($competition->load(['company', 'participants', 'votes', 'links']));
+        return response()->json($competition->load(['company', 'participants',  'links']));
     }
 
     /**
