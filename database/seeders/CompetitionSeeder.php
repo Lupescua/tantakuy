@@ -23,11 +23,6 @@ class CompetitionSeeder extends Seeder
 
             // Attach random users as participants
             $competition->participants()->attach($users->random(3)->pluck('id'));
-
-            // Add votes from users
-            foreach ($users->random(5) as $user) {
-                $competition->votes()->create(['user_id' => $user->id]);
-            }
         });
     }
 }

@@ -29,11 +29,6 @@ class Competition extends Model
         return $this->belongsToMany(User::class, 'competition_user');
     }
 
-    public function votes()
-    {
-        return $this->hasMany(CompetitionVote::class);
-    }
-
     public function links()
     {
         return $this->hasMany(CompetitionLink::class);

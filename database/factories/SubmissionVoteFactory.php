@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
-use App\Models\CompetitionVote;
-use App\Models\Competition;
+use App\Models\SubmissionVote;
 use App\Models\User;
+use App\Models\UserSubmission;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CompetitionVoteFactory extends Factory
+class SubmissionVoteFactory extends Factory
 {
-    protected $model = CompetitionVote::class;
+    protected $model = SubmissionVote::class;
 
     public function definition(): array
     {
         return [
-            'competition_id' => Competition::factory(),
+            'submission_id' => UserSubmission::factory(),
             'user_id' => User::factory(),
         ];
     }
