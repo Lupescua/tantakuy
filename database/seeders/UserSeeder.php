@@ -25,15 +25,11 @@ class UserSeeder extends Seeder
             ]),
             'location' => 'Aarhus, Denmark',
             'description' => 'Administrator account',
-            'profile_photo_path' => null,
+            'profile_photo_url' => null,
             'remember_token' => Str::random(10),
         ]);
 
         // Generate 10 test users
-        
-        User::factory(10)->withPersonalTeam()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::factory(10)->withPersonalTeam()->create();
     }
 }
