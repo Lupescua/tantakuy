@@ -12,10 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->withPersonalTeam()->create();
         $this->call([
             UserSeeder::class,
             CompanySeeder::class,
+            CompetitionSeeder::class,
+            CompetitionVoteSeeder::class,
+            CompetitionLinkSeeder::class,
         ]);
     }
 }
